@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+psycopg[binary]
+pydantic-settings
+python-multipart
+python-jose[cryptography]
+passlib[bcrypt]
+pypdf
+scikit-learn

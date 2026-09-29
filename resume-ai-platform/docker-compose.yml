@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres:16
+    container_name: resume_ai_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: resume_ai
+      POSTGRES_USER: resume_user
+      POSTGRES_PASSWORD: resume_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: resume_ai_backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://resume_user:resume_password@db:5432/resume_ai
+      SECRET_KEY: change-this-in-production
+      UPLOAD_DIR: /app/uploads
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes:
+      - uploads:/app/uploads
+
+volumes:
+  postgres_data:
+  uploads:
