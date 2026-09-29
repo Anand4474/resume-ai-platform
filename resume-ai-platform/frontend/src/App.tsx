@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const API_BASE_URL = "http://127.0.0.1:8000";
+const API_BASE_URL = "https://resume-ai-platform-bbfp.onrender.com";
 
 interface ATSBreakdown {
   skills: number;
@@ -279,7 +279,7 @@ function App() {
         );
       } else if (err instanceof TypeError) {
         setError(
-          "Cannot connect to the backend. Please make sure FastAPI is running at http://127.0.0.1:8000."
+          "Cannot connect to the backend. Please make sure FastAPI is running at https://resume-ai-platform-bbfp.onrender.com."
         );
       } else if (err instanceof Error) {
         setError(err.message);
@@ -1700,3 +1700,6 @@ function App() {
 }
 
 export default App;
+
+
+
